@@ -85,11 +85,25 @@ class UserController extends Controller
         $name = $request->file('path')->getClientOriginalName();
         $path = $request->file('path')->store('public/images');
         $request->path->move($path, $name);
-        $user->image=$name;
+        $user->image=$user->id.$name;
         $user->path = $path;
         $user->save();
         return $this-> returnData('user', $user);
     }
+
+    //display user profile picture
+//     public function displayImage($userId){
+//         $user = User::findOrFail($userId);
+//         $path = $user->path;
+//         if (!User::exists($path)) {
+//             abort(404);
+//         }
+//         $file = $path;
+//         $type = User::getMimeTypeFromExtension($path);
+//         $response = Response::make($file, 200);
+//         $response->header("Content-Type", $type);
+//         return $response;
+// }
 
 
     //here the part of adding a hadith to favorite

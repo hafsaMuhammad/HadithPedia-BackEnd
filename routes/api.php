@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     //user routes
     Route::get('users',[UserController::class,'index']);
+    Route::get('displayImage/{userId}',[UserController::class,'displayImage']);
     Route::get('favorites/{id}',[UserController::class,'favorites']);
     Route::post('logout',[UserController::class,'logout']);
     Route::post('uploadPhoto/{id}',[UserController::class,'uploadPhoto']);
