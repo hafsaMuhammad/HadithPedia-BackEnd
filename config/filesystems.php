@@ -37,8 +37,10 @@ return [
 
         'public' => [
             'driver' => 'local',
+            // 'root' => storage_path('app/public'),
+            // 'url' => env('APP_URL').'/storage',
             'root' => storage_path('app'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL').'https://hadith-pedia.herokuapp.com',
             'visibility' => 'public',
         ],
 
