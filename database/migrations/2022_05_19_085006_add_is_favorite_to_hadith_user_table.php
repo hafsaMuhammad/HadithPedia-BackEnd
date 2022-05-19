@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('hadith_user', function (Blueprint $table) {
-            $table->boolean('isFavorite');
+            $table->boolean('isFavorite')->nullable();
         });
     }
 
