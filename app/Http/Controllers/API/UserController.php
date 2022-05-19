@@ -83,7 +83,7 @@ class UserController extends Controller
             'path' => 'required|image'
         ]);
         $name = $request->file('path')->getClientOriginalName();
-        $path = $request->file('path')->store('public/images');
+        $path = $request->file('path')->store('public');
         $request->path->move($path, $name);
         $user->image=$user->id.$name;
         $user->path = $path;
