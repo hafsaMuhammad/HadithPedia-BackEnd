@@ -37,18 +37,8 @@ return [
 
         'public' => [
             'driver' => 'local',
-            // 'root' => storage_path('app/public'),
-            // 'url' => env('APP_URL').'/storage',
-            'root' => storage_path('/app/public/images'),
-            'url' => env('APP_URL').'/app/public/images',
-            'visibility' => 'public',
-        ],
-        'yourstitchart' => [
-            'driver' => 'local',
-            // 'root' => storage_path('app/public'),
-            // 'url' => env('APP_URL').'/storage',
-            'root' => 'public/app/public/images',
-            'url' => env('APP_URL').'/app/public/images',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
