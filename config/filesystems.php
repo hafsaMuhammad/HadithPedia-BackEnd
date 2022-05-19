@@ -37,10 +37,14 @@ return [
 
         'public' => [
             'driver' => 'local',
-            // 'root' => storage_path('app/public'),
-            // 'url' => env('APP_URL').'/storage',
-            'root' => storage_path('app'),
-            'url' => env('APP_URL').'https://hadith-pedia.herokuapp.com',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+        'profileImages' => [
+            'driver' => 'local',
+            'root' => public_path('assets/images/profileImages'),
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 
