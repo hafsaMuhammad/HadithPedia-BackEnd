@@ -37,6 +37,6 @@ class Hadith extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class,'hadith_user');
+        return $this->belongsToMany(User::class,'hadith_user')->withPivot('isFavorite');
     }
 }

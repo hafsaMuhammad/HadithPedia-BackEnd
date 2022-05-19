@@ -110,7 +110,7 @@ class UserController extends Controller
     public function attachHadith($userId ,$hadithId){
         $user = User::findOrFail($userId);
         $hadith = Hadith::findOrFail($hadithId);
-        $user -> hadiths()-> attach($hadith);
+        $user -> hadiths()-> attach($hadith,['isFavorite'=>true]);
         return $this->returnSuccessMessage("added a hadith to favorites..");
     }
     

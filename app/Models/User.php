@@ -36,7 +36,7 @@ class User extends Authenticatable
 
     public function hadiths()
     {
-        return $this->belongsToMany(Hadith::class, 'hadith_user');
+        return $this->belongsToMany(Hadith::class, 'hadith_user')->withPivot('isFavorite');
     }
 
     public function levels()
