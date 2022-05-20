@@ -96,14 +96,9 @@ class UserController extends Controller
         $request-> validate([
             'path' => 'required|image'
         ]);
-        
-        // $name = $request->file('path')->getClientOriginalName();
         $name= uploadImage('profileImages', $request->path);
-        // $path = $request->file('path')->store('public');
-        // $request->path->move($path, $name);
-        $user->image=$user->id.$name;
-        $user->path = $request->path;
-        // $user->save();
+        $user->image=$name;
+        $user->path = $user->getPhotoAttribute($name);
         return $this-> returnData('user', $user);
     }
 
