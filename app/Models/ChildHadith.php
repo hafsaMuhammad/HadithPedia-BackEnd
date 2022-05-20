@@ -16,4 +16,11 @@ class ChildHadith extends Model
         'audio',
         'audioPath',
     ];
+
+    public function  getPhotoAttribute($val){
+        return ($val !== null) ? asset('assets/images/hadithImages/' . $val) : "";
+    }
+    public function  getAudioAttribute($val){
+        return ($val !== null) ? asset('assets/audios/hadithAudio/' . $val) : "";
+    }
 }

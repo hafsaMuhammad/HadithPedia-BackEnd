@@ -47,6 +47,18 @@ return [
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
+        'hadithImages' => [
+            'driver' => 'local',
+            'root' => public_path('assets/images/hadithImages'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+        'hadithAudio' => [
+            'driver' => 'local',
+            'root' => public_path('assets/audios/hadithAudio'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

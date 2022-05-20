@@ -7,5 +7,11 @@ function uploadImage($folder,$image){
     return  $filename;
  }
 
+ function uploadAudio($folder,$audio){
+    $audio->store('/', $folder);
+    $filename = $audio->hashName();
+    return  $filename;
+ }
+
 
 ?>

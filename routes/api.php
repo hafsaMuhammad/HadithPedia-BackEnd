@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\ChildHadithController;
 use App\Http\Controllers\API\ClusterController;
 use App\Http\Controllers\API\HadithController;
 use App\Http\Controllers\API\HadithQuestionController;
@@ -28,6 +29,7 @@ Route::get('categories/{id}',[CategoryController::class,'show']);
 Route::post('register',[UserController::class,'register']);
 Route::post('login',[UserController::class,'login']);
 Route::get('categoryHadiths/{id}',[CategoryController::class,'categoryHadiths']);
+Route::apiResource('ChildHadith', ChildHadithController::class);
 
 
 
