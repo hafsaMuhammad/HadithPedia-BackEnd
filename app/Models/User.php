@@ -43,4 +43,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Level::class, 'level_user');
     }
+
+    public function  getPhotoAttribute($val){
+        return ($val !== null) ? asset('assets/images/profileImages/' . $val) : "";
+    }
 }

@@ -77,33 +77,36 @@ class UserController extends Controller
     
 
     //upload user profile picture
-    public function uploadPhoto( Request $request , $id){
+    // public function uploadPhoto( Request $request , $id){
+    //     $user = User::findOrFail($id);
+    //     $request-> validate([
+    //         'path' => 'required|image'
+    //     ]);
+    //     $name = $request->file('path')->getClientOriginalName();
+    //     $path = $request->file('path')->store('public');
+    //     $request->path->move($path, $name);
+    //     $user->image=$user->id.$name;
+    //     $user->path = $path;
+    //     $user->save();
+    //     return $this-> returnData('user', $user);
+    // }
+
+     public function uploadPhoto( Request $request , $id){
         $user = User::findOrFail($id);
         $request-> validate([
             'path' => 'required|image'
         ]);
-        $name = $request->file('path')->getClientOriginalName();
-        $path = $request->file('path')->store('public');
-        $request->path->move($path, $name);
+        
+        // $name = $request->file('path')->getClientOriginalName();
+        $name= uploadImage('profileImages', $request->path);
+        // $path = $request->file('path')->store('public');
+        // $request->path->move($path, $name);
         $user->image=$user->id.$name;
-        $user->path = $path;
-        $user->save();
+        $user->path = $request->path;
+        // $user->save();
         return $this-> returnData('user', $user);
     }
 
-    //display user profile picture
-//     public function displayImage($userId){
-//         $user = User::findOrFail($userId);
-//         $path = $user->path;
-//         if (!User::exists($path)) {
-//             abort(404);
-//         }
-//         $file = $path;
-//         $type = User::getMimeTypeFromExtension($path);
-//         $response = Response::make($file, 200);
-//         $response->header("Content-Type", $type);
-//         return $response;
-// }
 
 
     //here the part of adding a hadith to favorite
@@ -111,10 +114,10 @@ class UserController extends Controller
         $user = User::findOrFail($userId);
         $hadith = Hadith::findOrFail($hadithId);
         if (! $user->hadiths->contains($hadith->id)) {
-            // $user->items()->save($hadith);
             $user -> hadiths()-> attach($hadith,['isFavorite'=>true]);
+            return $this->returnSuccessMessage("added a hadith to favorites..");
         }
-        return $this->returnSuccessMessage("added a hadith to favorites..");
+        return $this->returnSuccessMessage("already exists in favorites..");
     }
     
     //removing a Hadith from favorites
