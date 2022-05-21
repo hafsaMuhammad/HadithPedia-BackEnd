@@ -144,8 +144,9 @@ class ChildHadithController extends Controller
      */
     public function destroy($id)
     {
-        $childhadith = ChildHadith::findOrFail($id);
-        $childhadith->delete();
+        // $childhadith = ChildHadith::findOrFail($id);
+        // $childhadith->delete();
+        ChildHadith::truncate();
         return $this-> returnData('childhadiths', $childhadith::all());
     }
 }
