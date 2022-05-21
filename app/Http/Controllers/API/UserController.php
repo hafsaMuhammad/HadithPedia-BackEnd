@@ -40,6 +40,12 @@ class UserController extends Controller
             'path'=> $request->get('path'),
             'image'=> $request->get('image')
         ]);
+        if ($request->has('path')) {
+            $name= uploadImage('profileImages', $request->path);
+            $user->image=$name;
+            $user->path = $user->getPhotoAttribute($name);
+        }
+
         $user->save();
         // creating the token 
         $token = $user->createToken('hadithToken')->plainTextToken;
@@ -99,6 +105,7 @@ class UserController extends Controller
         $name= uploadImage('profileImages', $request->path);
         $user->image=$name;
         $user->path = $user->getPhotoAttribute($name);
+        $user->save();
         return $this-> returnData('user', $user);
     }
 
