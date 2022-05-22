@@ -124,11 +124,11 @@ class ChildHadithController extends Controller
         $childhadith->audio = $request->get('audio');
         $childhadith->audioPath = $request->get('audioPath');
 
-        $image= uploadImage('hadithImages', $request->iamgePath);
+        $image= uploadImage('hadithImages', $childhadith->iamgePath);
         $childhadith->image=$image;
         $childhadith->iamgePath = $childhadith->getPhotoAttribute($image);
 
-        $audio = uploadAudio('hadithAudio', $request->audioPath);
+        $audio = uploadAudio('hadithAudio', $childhadith->audioPath);
         $childhadith->audio= $audio;
         $childhadith->audioPath= $childhadith->getAudioAttribute($audio);
 
@@ -147,5 +147,11 @@ class ChildHadithController extends Controller
         $childhadith = ChildHadith::findOrFail($id);
         $childhadith->delete();
         return $this-> returnData('childhadiths', $childhadith::all());
+    }
+
+    public function truncate()
+    {
+        ChildHadith::truncate();
+        return $this-> returnData('childhadiths', ChildHadith::all());
     }
 }
