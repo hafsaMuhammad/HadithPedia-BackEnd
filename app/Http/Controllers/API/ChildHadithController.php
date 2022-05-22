@@ -154,4 +154,10 @@ class ChildHadithController extends Controller
         ChildHadith::truncate();
         return $this-> returnData('childhadiths', ChildHadith::all());
     }
+
+    public function getImages()
+    {
+        $images=ChildHadith::all('iamgePath');
+        return $this-> returnData('images',$images );
+    }
 }

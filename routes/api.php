@@ -30,6 +30,7 @@ Route::post('register',[UserController::class,'register']);
 Route::post('login',[UserController::class,'login']);
 Route::get('categoryHadiths/{id}',[CategoryController::class,'categoryHadiths']);
 Route::post('ChildHadith/truncate', [ChildHadithController::class, 'truncate']);
+Route::get('ChildHadith/getImages', [ChildHadithController::class, 'getImages']);
 Route::apiResource('ChildHadith', ChildHadithController::class);
 
 
