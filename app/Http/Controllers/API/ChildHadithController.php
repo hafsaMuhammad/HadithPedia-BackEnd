@@ -59,13 +59,13 @@ class ChildHadithController extends Controller
             'audioPath' => $request->get('audioPath')
         ]);
 
-        // $image= uploadImage('hadithImages', $request->iamgePath);
-        // $newChildhadith->image=$image;
-        // $newChildhadith->iamgePath = $newChildhadith->getPhotoAttribute($image);
+        $image= uploadImage('hadithImages', $request->iamgePath);
+        $newChildhadith->image=$image;
+        $newChildhadith->iamgePath = $newChildhadith->getPhotoAttribute($image);
 
-        // $audio = uploadAudio('hadithAudio', $request->audioPath);
-        // $newChildhadith->audio= $audio;
-        // $newChildhadith->audioPath= $newChildhadith->getAudioAttribute($audio);
+        $audio = uploadAudio('hadithAudio', $request->audioPath);
+        $newChildhadith->audio= $audio;
+        $newChildhadith->audioPath= $newChildhadith->getAudioAttribute($audio);
 
         $newChildhadith->save();
         return $this-> returnData('childhadith', $newChildhadith);
