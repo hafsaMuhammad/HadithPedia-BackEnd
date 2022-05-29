@@ -43,7 +43,7 @@ class ChildHadithController extends Controller
             'matn' => 'required',
             'description' => '',
             'image' => '',
-            'iamgePath' => 'image',
+            'iamgePath' => '',
             'audio' => '',
             'audioPath' => ''
 
@@ -59,9 +59,9 @@ class ChildHadithController extends Controller
             'audioPath' => $request->get('audioPath')
         ]);
 
-        $image= uploadImage('hadithImages', $request->iamgePath);
-        $newChildhadith->image=$image;
-        $newChildhadith->iamgePath = $newChildhadith->getPhotoAttribute($image);
+        // $image= uploadImage('hadithImages', $request->iamgePath);
+        // $newChildhadith->image=$image;
+        // $newChildhadith->iamgePath = $newChildhadith->getPhotoAttribute($image);
 
         $audio = uploadAudio('hadithAudio', $request->audioPath);
         $newChildhadith->audio= $audio;
