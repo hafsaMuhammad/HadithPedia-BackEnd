@@ -86,10 +86,10 @@
             <label for="degree" class="col-sm-2 col-form-label"></label>
             <input type="text" name="degree" placeholder="أدخل درجة صحة الحديث.." class="form-control py-3" id="degree">
         </div>
-        {{-- <div class="row mb-4">
+        <div class="row mb-4">
             <label for="cluster_id" class="col-sm-2 col-form-label"></label>
             <input type="text" name="cluster_id" placeholder="أدخل المستوى الأساسي التابع له.." class="form-control py-3" id="cluster_id">
-        </div> --}}
+        </div>
         <button type="submit" class="btn btn-primary">حفظ الحديث</button>
         </form>
 
