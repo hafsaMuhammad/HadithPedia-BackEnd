@@ -103,4 +103,15 @@ class ClusterController extends Controller
         $cluster->delete();
         return $this-> returnData('clusters', $cluster::all());
     }
+
+
+    //get hadiths of a specific cluster
+
+     //get all hadiths that is attached to a category
+     public function clusterHadiths($id){
+        $cluster =  Cluster::findOrFail($id);
+        $clusterHadiths = $cluster->hadiths;
+        return $this->returnData('clusterHadiths', $clusterHadiths);
+    }
+    
 }

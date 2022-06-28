@@ -52,6 +52,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('hadithQuestions', HadithQuestionController::class);
     Route::apiResource('levels', LevelController::class);
     Route::apiResource('clusters', ClusterController::class);
+    Route::get('clusterHadiths/{id}',[ClusterController::class,'clusterHadiths']);
+
 
     //user routes
     Route::get('users',[UserController::class,'index']);
