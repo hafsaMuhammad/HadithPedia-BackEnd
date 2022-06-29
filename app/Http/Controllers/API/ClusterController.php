@@ -107,7 +107,7 @@ class ClusterController extends Controller
 
     //get hadiths of a specific cluster
 
-     //get all hadiths that is attached to a category
+    //get all hadiths that is attached to a cluster
      public function clusterHadiths($id){
         $cluster =  Cluster::findOrFail($id);
         $clusterHadiths = $cluster->hadiths;

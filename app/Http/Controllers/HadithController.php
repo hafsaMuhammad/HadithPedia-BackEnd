@@ -44,6 +44,7 @@ class HadithController extends Controller
             'source' => 'required',
             'degree' => 'required',
             'cluster_id' => '',
+            'level_id' => '',
         ]);
         Hadith::create([
             'sanad'=> $request->sanad,
@@ -51,7 +52,8 @@ class HadithController extends Controller
             'description'=>$request->description,
             'source'=> $request->source,
             'degree'=> $request->degree,
-            'cluster_id'=> $request->cluster_id
+            'cluster_id'=> $request->cluster_id,
+            'level_id'=> $request->level_id
         ]);
         return redirect()->back()->with('msg','تم إضفة حديث جديد');
     }
@@ -95,7 +97,8 @@ class HadithController extends Controller
             'description' => '',
             'source' => '',
             'degree' => '',
-            'cluster_id' => ''
+            'cluster_id' => '',
+            'level_id' => '',
         ]);
 
         $hadith->matn = $request->get('matn');
@@ -104,6 +107,7 @@ class HadithController extends Controller
         $hadith->source = $request->get('source');
         $hadith->degree = $request->get('degree');
         $hadith->cluster_id = $request->get('cluster_id');
+        $hadith->level_id = $request->get('level_id');
 
         $hadith->save();
         return redirect()->back()->with('msg','تم تعديل الحديث');

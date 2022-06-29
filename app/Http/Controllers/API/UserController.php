@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Hadith;
+use App\Models\Level;
 use App\Traits\GeneralTrait;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -121,6 +122,7 @@ class UserController extends Controller
         }
         return $this->returnSuccessMessage("already exists in favorites..");
     }
+
     
     //removing a Hadith from favorites
     public function detachHadith($userId ,$hadithId){
@@ -136,6 +138,25 @@ class UserController extends Controller
         $user =  User::findOrFail($id);
         $favorites = $user->hadiths;
         return $this->returnData('favorites', $favorites);
+    }
+
+
+     //here the part of adding a grade to a level for a specific user
+     public function attachGrade($userId ,$levelId, Request $request){
+        $user = User::findOrFail($userId);
+        $level = Level::findOrFail($levelId);
+        $user -> levels()-> attach($level,['grade'=>$request->get('grade')]);
+        $level->grade = $request->get('grade');
+        $level->save();
+        return $this->returnSuccessMessage("added a grade to that user..");
+    }
+
+
+     //get all levels for a user
+     public function grades($id){
+        $user =  User::findOrFail($id);
+        $grades = $user->levels;
+        return $this->returnData('grades', $grades);
     }
 
 }

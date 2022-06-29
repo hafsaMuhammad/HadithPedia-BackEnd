@@ -17,6 +17,7 @@ class Hadith extends Model
         'source',
         'degree',
         'cluster_id',
+        'level_id',
     ];
 
 
@@ -28,6 +29,10 @@ class Hadith extends Model
     public function cluster()
     {
         return $this->belongsTo(Cluster::class,'cluster_id');
+    }
+    public function level()
+    {
+        return $this->belongsTo(Level::class,'level_id');
     }
 
     public function categories()

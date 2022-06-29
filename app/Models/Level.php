@@ -26,4 +26,8 @@ class Level extends Model
     {
         return $this->belongsToMany(User::class,'level_user');
     }
+    public function hadiths()
+    {
+        return $this->hasMany(Hadith::class, 'level_id');
+    }
 }

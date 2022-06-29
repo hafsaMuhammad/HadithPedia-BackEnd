@@ -35,7 +35,8 @@ class HadithController extends Controller
             'description' => '',
             'source' => '',
             'degree' => '',
-            'cluster_id' => ''
+            'cluster_id' => '',
+            'level_id' => ''
 
         ]);
 
@@ -46,7 +47,8 @@ class HadithController extends Controller
             'description' => $request->get('description'),
             'source' => $request->get('source'),
             'degree' => $request->get('degree'),
-            'cluster_id' => $request->get('cluster_id')
+            'cluster_id' => $request->get('cluster_id'),
+            'level_id' => $request->get('level_id'),
         ]);
 
         $newHadith->save();
@@ -95,7 +97,8 @@ class HadithController extends Controller
             'description' => '',
             'source' => '',
             'degree' => '',
-            'cluster_id' => ''
+            'cluster_id' => '',
+            'level_id' => ''
 
         ]);
 
@@ -105,6 +108,7 @@ class HadithController extends Controller
         $hadith->source = $request->get('source');
         $hadith->degree = $request->get('degree');
         $hadith->cluster_id = $request->get('cluster_id');
+        $hadith->level_id = $request->get('level_id');
 
         $hadith->save();
         return $this-> returnData('hadith', $hadith);

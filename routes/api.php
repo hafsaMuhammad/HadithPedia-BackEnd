@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::apiResource('hadithQuestions', HadithQuestionController::class);
     Route::apiResource('levels', LevelController::class);
+    Route::get('levelHadiths/{id}',[LevelController::class,'levelHadiths']);
     Route::apiResource('clusters', ClusterController::class);
     Route::get('clusterHadiths/{id}',[ClusterController::class,'clusterHadiths']);
 
@@ -59,8 +60,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('users',[UserController::class,'index']);
     Route::get('displayImage/{userId}',[UserController::class,'displayImage']);
     Route::get('favorites/{id}',[UserController::class,'favorites']);
+    Route::get('grades/{id}',[UserController::class,'grades']);
     Route::post('logout',[UserController::class,'logout']);
     Route::post('uploadPhoto/{id}',[UserController::class,'uploadPhoto']);
     Route::post('attachHadith/{userId}/{hadithId}',[UserController::class,'attachHadith']);
     Route::post('detachHadith/{userId}/{hadithId}',[UserController::class,'detachHadith']);
+    Route::post('attachGrade/{userId}/{levelId}',[UserController::class,'attachGrade']);
 });

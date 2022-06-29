@@ -93,8 +93,12 @@
             <input type="text" name="degree"  class="form-control py-3" id="degree" value="{{$hadith->degree}}">
         </div>
         <div class="row mb-4">
-            <label for="cluster_id" class="col-sm-2 col-form-label"> المستوى التابع له الحديث</label>
+            <label for="cluster_id" class="col-sm-2 col-form-label"> المستوى الأساسي التابع له الحديث</label>
             <input type="text" name="cluster_id" class="form-control py-3" id="cluster_id" value="{{$hadith->cluster_id}}">
+        </div>
+        <div class="row mb-4">
+            <label for="level_id" class="col-sm-2 col-form-label"> المستوى الفرعي التابع له الحديث</label>
+            <input type="text" name="level_id" class="form-control py-3" id="level_id" value="{{$hadith->level_id}}">
         </div>
         <button type="submit" class="btn btn-primary">حفظ الحديث</button>
         </form>

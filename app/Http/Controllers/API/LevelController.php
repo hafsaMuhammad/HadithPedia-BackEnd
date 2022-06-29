@@ -110,4 +110,12 @@ class LevelController extends Controller
         $level->delete();
         return $this-> returnData('levels', $level::all());
     }
+
+
+    //get all hadiths that is attached to a level
+    public function levelHadiths($id){
+        $level =  Level::findOrFail($id);
+        $levelHadiths = $level->hadiths;
+        return $this->returnData('levelHadiths', $levelHadiths);
+    }
 }

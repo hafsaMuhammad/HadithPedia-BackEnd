@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function levels()
     {
-        return $this->belongsToMany(Level::class, 'level_user');
+        return $this->belongsToMany(Level::class, 'level_user')->withPivot('grade');
     }
 
     public function  getPhotoAttribute($val){

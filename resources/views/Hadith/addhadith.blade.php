@@ -90,6 +90,10 @@
             <label for="cluster_id" class="col-sm-2 col-form-label"></label>
             <input type="text" name="cluster_id" placeholder="أدخل المستوى الأساسي التابع له.." class="form-control py-3" id="cluster_id">
         </div>
+        <div class="row mb-4">
+            <label for="level_id" class="col-sm-2 col-form-label"></label>
+            <input type="text" name="level_id" placeholder="أدخل المستوى الفرعي التابع له.." class="form-control py-3" id="level_id">
+        </div>
         <button type="submit" class="btn btn-primary">حفظ الحديث</button>
         </form>
 
