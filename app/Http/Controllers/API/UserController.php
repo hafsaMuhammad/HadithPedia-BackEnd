@@ -146,8 +146,6 @@ class UserController extends Controller
         $user = User::findOrFail($userId);
         $level = Level::findOrFail($levelId);
         $user -> levels()-> attach($level,['grade'=>$request->get('grade')]);
-        $level->grade = $request->get('grade');
-        $level->save();
         return $this->returnSuccessMessage("added a grade to that user..");
     }
 
