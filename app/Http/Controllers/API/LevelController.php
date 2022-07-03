@@ -41,12 +41,10 @@ class LevelController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'grade' => 'required',
             'cluster_id' => '',
         ]);
         $newLevel = new Level([
             'name' => $request->get('name'),
-            'grade' => $request->get('grade'),
             'cluster_id' => $request->get('cluster_id'),
         ]);
         $newLevel->save();
@@ -88,11 +86,9 @@ class LevelController extends Controller
         $level = Level::findOrFail($id);
         $request->validate([
             'name' => '',
-            'grade' =>'',
             'cluster_id' => '',
         ]);
         $level->name = $request->get('name');
-        $level->grade = $request->get('grade');
         $level->cluster_id = $request->get('cluster_id');
         $level->save();
         return $this-> returnData('level', $level);
