@@ -132,7 +132,8 @@ class ClusterController extends Controller
             for ($j=1; $j <= $eq; $j++) 
                 { 
                     $newlevel = Level::create([
-                        'name'=> 'level'.$j
+                        'name'=> 'level'.$j,
+                        'cluster_id' => $k
                     ]);
                     $count = $j-1;
                     for ($i = ($count * 10) ; $i < $length ; $i++) { 

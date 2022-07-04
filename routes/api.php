@@ -50,6 +50,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('hadiths',[HadithController::class,'store']);
     Route::put('hadiths/{id}',[HadithController::class,'update']);
     Route::delete('hadiths/{id}',[HadithController::class,'destroy']);
+    Route::get('hadithsQuestion/{id}',[HadithController::class,'hadithsQuestion']);
+
 
     //categories routes
     Route::post('categories',[CategoryController::class,'store']);

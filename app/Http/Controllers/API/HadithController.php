@@ -126,4 +126,12 @@ class HadithController extends Controller
         $hadith->delete();
         return $this-> returnData('hadiths', $hadith::all());
     }
+
+
+     //get a question that is attached to a hadith
+     public function hadithsQuestion($id){
+        $hadith =  Hadith::findOrFail($id);
+        $hadithsQuestion = $hadith->hadithQuestion;
+        return $this->returnData('hadithsQuestion', $hadithsQuestion);
+    }
 }
