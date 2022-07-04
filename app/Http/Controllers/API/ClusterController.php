@@ -4,9 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cluster;
+use App\Models\Level;
 use App\Traits\GeneralTrait;
 use Illuminate\Http\Request;
-
+use SebastianBergmann\LinesOfCode\Counter;
 
 class ClusterController extends Controller
 {
@@ -113,5 +114,34 @@ class ClusterController extends Controller
         $clusterHadiths = $cluster->hadiths;
         return $this->returnData('clusterHadiths', $clusterHadiths);
     }
-    
+
+
+
+
+
+    /*function to take the response of the cluter hadiths
+      and insert hadiths or attach it it into new levels
+     */
+    public function insertData()
+    {
+        for ($k=1; $k <3 ; $k++) { 
+            $cluster = Cluster::findOrFail($k);
+            $hadiths = $cluster->hadiths;
+            $length =  count($hadiths);
+            $eq = ($length/10) + 1;
+            for ($j=1; $j <= $eq; $j++) 
+                { 
+                    $newlevel = Level::create([
+                        'name'=> 'level'.$j
+                    ]);
+                    $count = $j-1;
+                    for ($i = ($count * 10) ; $i < $length ; $i++) { 
+                            $hadith = $hadiths[$i];
+                            $hadith->level_id = $newlevel->id;
+                            $hadith->save();
+                    }
+            }
+        }
+        return 'ok';
+    }
 }

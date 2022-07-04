@@ -7,6 +7,7 @@ use App\Http\Controllers\API\HadithController;
 use App\Http\Controllers\API\HadithQuestionController;
 use App\Http\Controllers\API\LevelController;
 use App\Http\Controllers\API\UserController;
+use App\Models\ChildHadith;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,38 +23,59 @@ use Illuminate\Support\Facades\Route;
 */
 
 //public routes
+
+//hadith routes
 Route::get('hadiths', [HadithController::class,'index']);
 Route::get('hadiths/{id}',[HadithController::class,'show']);
+
+//categories routes
 Route::get('categories', [CategoryController::class,'index']);
 Route::get('categories/{id}',[CategoryController::class,'show']);
+Route::get('categoryHadiths/{id}',[CategoryController::class,'categoryHadiths']);
+
+//child hadith routes
+Route::get('ChildHadith', [ChildHadithController::class,'index']);
+Route::get('ChildHadith/{id}',[ChildHadithController::class,'show']);
+
+//user routes
 Route::post('register',[UserController::class,'register']);
 Route::post('login',[UserController::class,'login']);
-Route::get('categoryHadiths/{id}',[CategoryController::class,'categoryHadiths']);
-Route::post('ChildHadith/truncate', [ChildHadithController::class, 'truncate']);
-Route::get('ChildHadith/getImages', [ChildHadithController::class, 'getImages']);
-Route::apiResource('ChildHadith', ChildHadithController::class);
 
 
 
 //protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
-    
+    //hadith routes
     Route::post('hadiths',[HadithController::class,'store']);
     Route::put('hadiths/{id}',[HadithController::class,'update']);
     Route::delete('hadiths/{id}',[HadithController::class,'destroy']);
 
+    //categories routes
     Route::post('categories',[CategoryController::class,'store']);
     Route::put('categories/{id}',[CategoryController::class,'update']);
     Route::delete('categories/{id}',[CategoryController::class,'destroy']);
     Route::post('categoryAttach/{categoryId}/{hadithId}',[CategoryController::class,'categoryAttach']);
 
-
+    //hadith questions
     Route::apiResource('hadithQuestions', HadithQuestionController::class);
+
+
+    //level routes
     Route::apiResource('levels', LevelController::class);
     Route::get('levelHadiths/{id}',[LevelController::class,'levelHadiths']);
+
+    //cluster routes
     Route::apiResource('clusters', ClusterController::class);
     Route::get('clusterHadiths/{id}',[ClusterController::class,'clusterHadiths']);
+    Route::get('insertData', [ClusterController::class,'insertData']);
+
+    //child hadiths routes
+    Route::post('ChildHadith',[ChildHadithController::class,'store']);
+    Route::put('ChildHadith/{id}',[ChildHadithController::class,'update']);
+    Route::delete('ChildHadith/{id}',[ChildHadithController::class,'destroy']);
+    Route::post('ChildHadith/truncate', [ChildHadithController::class, 'truncate']);
+    Route::get('ChildHadith/getImages', [ChildHadithController::class, 'getImages']);
 
 
     //user routes
