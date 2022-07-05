@@ -141,7 +141,9 @@ class HadithQuestionController extends Controller
         foreach($hadiths as $hadith){
             $hadithsQuestion = $hadith->hadithQuestion;
             $levelId = $hadith->level_id;
-            $hadithsQuestion->level_id = $levelId;
+            if ($hadith->id != null) {
+                $hadithsQuestion->level_id = $levelId;
+            }
             $hadithsQuestion->save();
         }
         return 'ok';
