@@ -66,6 +66,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //level routes
     Route::apiResource('levels', LevelController::class);
     Route::get('levelHadiths/{id}',[LevelController::class,'levelHadiths']);
+    Route::get('levelQuestions/{id}',[LevelController::class,'levelQuestions']);
 
     //cluster routes
     Route::apiResource('clusters', ClusterController::class);

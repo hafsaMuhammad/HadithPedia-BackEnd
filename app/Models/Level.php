@@ -30,4 +30,8 @@ class Level extends Model
     {
         return $this->hasMany(Hadith::class, 'level_id');
     }
+    public function hadithQuestions()
+    {
+        return $this->hasMany(HadithQuestion::class, 'level_id');
+    }
 }

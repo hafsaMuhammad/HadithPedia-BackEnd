@@ -114,4 +114,11 @@ class LevelController extends Controller
         $levelHadiths = $level->hadiths;
         return $this->returnData('levelHadiths', $levelHadiths);
     }
+
+    //get all hadith questions that is attached to a level
+    public function levelQuestions($id){
+        $level =  Level::findOrFail($id);
+        $levelQuestions = $level->hadithQuestions;
+        return $this->returnData('levelQuestions', $levelQuestions);
+    }
 }

@@ -22,4 +22,8 @@ class HadithQuestion extends Model
     {
         return $this->belongsTo(Hadith::class, 'hadith_id');
     }
+    public function level()
+    {
+        return $this->belongsTo(Level::class,'level_id');
+    }
 }
