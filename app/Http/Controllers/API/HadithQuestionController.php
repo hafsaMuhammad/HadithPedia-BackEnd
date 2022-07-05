@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Hadith;
 use App\Models\HadithQuestion;
 use App\Traits\GeneralTrait;
 use Illuminate\Http\Request;
@@ -132,5 +133,17 @@ class HadithQuestionController extends Controller
         $hadithQuestion->delete();
 
         return $this-> returnData('hadithQuestion', $hadithQuestion::all());
+    }
+
+
+    public function insertLevel(){
+        $hadiths = Hadith::all();
+        foreach($hadiths as $hadith){
+            $hadithsQuestion = $hadith->hadithQuestion;
+            $levelId = $hadith->level_id;
+            $hadithsQuestion->level_id = $levelId;
+            $hadithsQuestion->save();
+        }
+        return 'ok';
     }
 }
