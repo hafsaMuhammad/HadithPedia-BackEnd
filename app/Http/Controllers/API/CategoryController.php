@@ -85,6 +85,8 @@ class CategoryController extends Controller
     }
 
 
+    //get all categories and hadiths with pivot table
+    //an android developer in my team asked for it, He needs it for cashing
     public function categoriesHadiths(){
         $categories =  Category::all();
         $categoriesHadiths = array();
