@@ -145,7 +145,13 @@ class UserController extends Controller
      public function attachGrade($userId ,$levelId, Request $request){
         $user = User::findOrFail($userId);
         $level = Level::findOrFail($levelId);
-        $user -> levels()-> attach($level,['grade'=>$request->get('grade')]);
+        $hasGrade = $user->levels()->where('levels.id', $levelId)->first();
+        if(!$hasGrade) {
+            $user -> levels()-> attach($level,['grade'=>$request->get('grade')]);
+        }
+         else{
+            $user->levels()->updateExistingPivot($levelId, ['grade' => $request->get('grade')]);
+        }
         return $this->returnSuccessMessage("added a grade to that user..");
     }
 

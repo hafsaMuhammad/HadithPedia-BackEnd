@@ -138,7 +138,6 @@ class HadithQuestionController extends Controller
 
     public function insertLevel(){
         $hadiths = Hadith::all();
-        // return $hadiths[20]->hadithQuestion;
         for ($i=0; $i < count($hadiths) ; $i++) { 
             $hadithsQuestion = $hadiths[$i]->hadithQuestion;
             $levelId = $hadiths[$i]->level_id;
@@ -147,14 +146,6 @@ class HadithQuestionController extends Controller
                     $hadithsQuestion->save();
                 }
         }
-        // foreach($hadiths as $hadith){
-        //     $hadithsQuestion = $hadith->hadithQuestion;
-        //     $levelId = $hadith->level_id;
-        //     if (!is_null($levelId)) {
-        //         $hadithsQuestion->level_id = $levelId;
-        //         $hadithsQuestion->save();
-        //     }
-        // }
         return 'ok';
     }
 }
