@@ -83,5 +83,16 @@ class CategoryController extends Controller
         $categoryHadiths = $category->hadiths;
         return $this->returnData('categoryHadiths', $categoryHadiths);
     }
+
+
+    public function categoriesHadiths(){
+        $categories =  Category::all();
+        $categoriesHadiths = array();
+        for ($i=0; $i < count($categories) ; $i++) { 
+            $new = $categories[$i]->hadiths()->get();
+            array_push($categoriesHadiths, $new);
+        }
+        return $this->returnData('categoriesHadiths', $categoriesHadiths);
+    }
     
 }

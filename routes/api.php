@@ -32,6 +32,7 @@ Route::get('hadiths/{id}',[HadithController::class,'show']);
 Route::get('categories', [CategoryController::class,'index']);
 Route::get('categories/{id}',[CategoryController::class,'show']);
 Route::get('categoryHadiths/{id}',[CategoryController::class,'categoryHadiths']);
+Route::get('categoriesHadiths',[CategoryController::class,'categoriesHadiths']);
 
 //child hadith routes
 Route::get('ChildHadith', [ChildHadithController::class,'index']);
