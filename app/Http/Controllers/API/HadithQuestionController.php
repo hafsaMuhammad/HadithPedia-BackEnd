@@ -138,14 +138,23 @@ class HadithQuestionController extends Controller
 
     public function insertLevel(){
         $hadiths = Hadith::all();
-        foreach($hadiths as $hadith){
-            $hadithsQuestion = $hadith->hadithQuestion;
-            $levelId = $hadith->level_id;
-            if ($hadith->id != null) {
-                $hadithsQuestion->level_id = $levelId;
-            }
-            $hadithsQuestion->save();
+        // return $hadiths[20]->hadithQuestion;
+        for ($i=0; $i < count($hadiths) ; $i++) { 
+            $hadithsQuestion = $hadiths[$i]->hadithQuestion;
+            $levelId = $hadiths[$i]->level_id;
+            if ($hadithsQuestion) {
+                    $hadithsQuestion->level_id = $levelId;
+                    $hadithsQuestion->save();
+                }
         }
+        // foreach($hadiths as $hadith){
+        //     $hadithsQuestion = $hadith->hadithQuestion;
+        //     $levelId = $hadith->level_id;
+        //     if (!is_null($levelId)) {
+        //         $hadithsQuestion->level_id = $levelId;
+        //         $hadithsQuestion->save();
+        //     }
+        // }
         return 'ok';
     }
 }
